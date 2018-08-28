@@ -1,0 +1,25 @@
+{
+  "name": "sign-list-parser",
+  "version": "0.1.0",
+  "description": "A script to parse ASL files to JSON",
+  "main": "index.js",
+  "repository": "https://github.com/ElectronicBabylonianLiterature/sign-list-parser.git",
+  "author": "Jussi Laasonen <jussi.laasonen@lmu.de>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^9.0.0",
+    "jest": "^23.5.0",
+    "standard": "^11.0.1"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "env": {
+      "es6": true,
+      "node": true,
+      "jest": true
+    }
+  }
+}
