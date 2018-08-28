@@ -1,5 +1,5 @@
 Asl {
-    Sign = "@sign" signName List* "@end sign"
+    Sign = "@sign" signName Field* "@end sign"
 
     signName = simpleSign | complexSign
     simpleSign = singleSign modifier?
@@ -10,6 +10,11 @@ Asl {
     singleSign = (upper | "ₓ" | "₀".."₉" | "Š" | "Ṣ" | "Ṭ" | "Ś" | "Ḫ")+
     modifier = "@" (lower | digit+)
 
+    Field = List | Unicode
+
     List = "@list" listName
     listName = alnum+
-}
+
+    Unicode = "@ucode" NonemptyListOf<codepoint, ".">
+    codepoint = "x" hexDigit+
+} 
