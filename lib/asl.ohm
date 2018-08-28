@@ -1,0 +1,13 @@
+Asl {
+    Sign = "@sign" signName "@end sign"
+
+    signName = simpleSign | complexSign
+
+    simpleSign = singleSign modifier?
+    complexSign = "|" multiSign modifier? "|"
+    multiSignParen = "(" multiSign ")"
+    multiSign = nestedSign ("." nestedSign)*
+    nestedSign = singleSign ("×" (singleSign | multiSignParen))*
+    singleSign = (upper | "ₓ" | "₀".."₉" | "Š" | "Ṣ" | "Ṭ" | "Ś" | "Ḫ")+
+    modifier = "@" (lower | digit+)
+}
