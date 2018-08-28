@@ -1,8 +1,7 @@
 Asl {
-    Sign = "@sign" signName "@end sign"
+    Sign = "@sign" signName List* "@end sign"
 
     signName = simpleSign | complexSign
-
     simpleSign = singleSign modifier?
     complexSign = "|" multiSign modifier? "|"
     multiSignParen = "(" multiSign ")"
@@ -10,4 +9,7 @@ Asl {
     nestedSign = singleSign ("×" (singleSign | multiSignParen))*
     singleSign = (upper | "ₓ" | "₀".."₉" | "Š" | "Ṣ" | "Ṭ" | "Ś" | "Ḫ")+
     modifier = "@" (lower | digit+)
+
+    List = "@list" listName
+    listName = alnum+
 }
