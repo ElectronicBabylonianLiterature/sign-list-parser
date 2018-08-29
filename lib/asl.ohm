@@ -10,15 +10,17 @@ Asl {
     singleSign = (upper | "ₓ" | "₀".."₉" | "Š" | "Ṣ" | "Ṭ" | "Ś" | "Ḫ")+
     modifier = "@" (lower | digit+)
 
-    Field = List | Unicode | Note | InternalNote
+    Field = List
+          | Unicode
+          | FreeTextField<"@note">
+          | FreeTextField<"@inote">
+          | FreeTextField<"@lit">
 
     List = "@list" alnum+
 
     Unicode = "@ucode" NonemptyListOf<codepoint, ".">
     codepoint = "x" hexDigit+
-
-    Note = "@note" freetext
-    InternalNote = "@inote" freetext
-
-    freetext =  (~"\n" any)+
+    
+    FreeTextField<tag> = tag freetext
+    freetext = (~"\n" any)+
 } 
