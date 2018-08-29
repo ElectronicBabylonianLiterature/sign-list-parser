@@ -25,5 +25,6 @@ Asl {
     FreeTextField<tag> = tag freetext
     freetext = (~"\n" any)+
 
-    Value = "@v" freetext
+    Value = "@v" language? freetext
+    language = "%" lower+
 } 
