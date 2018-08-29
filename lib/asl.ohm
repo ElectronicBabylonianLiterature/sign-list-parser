@@ -7,7 +7,7 @@ Asl {
     multiSignParen = "(" multiSign ")"
     multiSign = nestedSign ("." nestedSign)*
     nestedSign = singleSign ("×" (singleSign | multiSignParen))*
-    singleSign = (upper | "ₓ" | "₀".."₉" | "Š" | "Ṣ" | "Ṭ" | "Ś" | "Ḫ")+
+    singleSign = (upper | subscript)+
     modifier = "@" (lower | digit+)
 
     Field = List
@@ -25,6 +25,12 @@ Asl {
     FreeTextField<tag> = tag freetext
     freetext = (~"\n" any)+
 
-    Value = "@v" language? freetext
+    Value = "@v" language? (reading | slashedReading)
     language = "%" lower+
-} 
+    slashedReading = "/" reading "/"
+    reading = (lower | subscript | "-")+ modifier?
+
+    subscript =  "ₓ" | "₀".."₉"
+    upper += "Š" | "Ṣ" | "Ṭ" | "Ś" | "Ḫ" | "Ŋ"
+    lower += "š" | "ṣ" | "ṭ" | "ś" | "ḫ" | "ŋ"
+ } 
