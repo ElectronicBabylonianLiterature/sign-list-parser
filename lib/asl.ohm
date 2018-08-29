@@ -10,11 +10,14 @@ Asl {
     singleSign = (upper | "ₓ" | "₀".."₉" | "Š" | "Ṣ" | "Ṭ" | "Ś" | "Ḫ")+
     modifier = "@" (lower | digit+)
 
-    Field = List | Unicode
+    Field = List | Unicode | note
 
-    List = "@list" listName
-    listName = alnum+
+    List = "@list" alnum+
 
     Unicode = "@ucode" NonemptyListOf<codepoint, ".">
     codepoint = "x" hexDigit+
+
+    note = "@note" whitespace (~"\n" any)+
+
+    whitespace = (" " | "\t")+
 } 
