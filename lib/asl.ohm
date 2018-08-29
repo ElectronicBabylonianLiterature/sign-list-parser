@@ -15,6 +15,7 @@ Asl {
           | FreeTextField<"@note">
           | FreeTextField<"@inote">
           | FreeTextField<"@lit">
+          | Value
 
     List = "@list" alnum+
 
@@ -23,4 +24,6 @@ Asl {
     
     FreeTextField<tag> = tag freetext
     freetext = (~"\n" any)+
+
+    Value = "@v" freetext
 } 
