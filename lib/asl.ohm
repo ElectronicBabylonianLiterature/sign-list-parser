@@ -1,13 +1,12 @@
 Asl {
-    Sign = "@sign" signName Field* "@end sign"
-
-    signName = simpleSign | complexSign
-    simpleSign = singleSign modifier?
-    complexSign = "|" multiSign modifier? "|"
-    multiSignParen = "(" multiSign ")"
-    multiSign = nestedSign ("." nestedSign)*
-    nestedSign = singleSign ("×" (singleSign | multiSignParen))*
-    singleSign = (upper | subscript)+
+    Sign = "@sign" (simple | enclosed) Field* "@end sign"
+    enclosed  = "|" compound "|"
+    compound = compoundPart (compoundOperator compoundPart)*
+    compoundPart = group | simple | repeated
+    compoundOperator = "." | "+" | "@" | "&" | "%" | "×"
+    group = "(" compound ")"
+    repeated = digit+ "x" simple
+    simple = ~digit (upper | subscript | digit)+ modifier?
     modifier = "@" (lower | digit+)
 
     Field = List
