@@ -25,17 +25,14 @@ Asl {
     freetext = (~"\n" any)+
 
     Value = "@v" language? lacuna? (reading | slashedReading)?  ("[" Instance "]")?
+    Instance = (NoBrackets | Brackets)+
+    Brackets = "[" NoBrackets "]"
+    NoBrackets = (~("[" | "]") any)+
     language = "%" lower+
     slashedReading = "/" reading "/"
     reading = (lower | subscript | "-")+ modifier?
     lacuna = "[...]" | "..."
-    Instance = (Phrase "=")? CdlLabel (", " word)?
-    CdlLabel = project? ":" number Phrase?
-    project = (letter | "/")+ 
-    number = ("P" | "PP" | "Q") digit+
-    word = (reading | compound)+
 
-    Phrase = alnum+
     subscript =  "ₓ" | "₀".."₉"
     upper += "Š" | "Ṣ" | "Ṭ" | "Ś" | "Ḫ" | "Ŋ"
     lower += "š" | "ṣ" | "ṭ" | "ś" | "ḫ" | "ŋ"
