@@ -11,10 +11,12 @@ Asl {
 
     Field = List
           | Unicode
-          | FreeTextField<"@note">
-          | FreeTextField<"@inote">
+          | ScopedField
           | FreeTextField<"@lit">
           | Value
+
+    ScopedField = FreeTextField<"@note">
+                | FreeTextField<"@inote">
 
     List = "@list" alnum+
 
@@ -24,7 +26,7 @@ Asl {
     FreeTextField<tag> = tag freetext
     freetext = (~"\n" any)+
 
-    Value = "@v" language? unknown? (reading | slashedReading)?  ("[" Instance "]")?
+    Value = "@v" language? unknown? (reading | slashedReading)?  ("[" Instance "]")? ScopedField*
     Instance = (NoBrackets | Brackets)+
     Brackets = "[" NoBrackets "]"
     NoBrackets = (~("[" | "]") any)+
