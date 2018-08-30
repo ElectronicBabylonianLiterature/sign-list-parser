@@ -30,7 +30,7 @@ Asl {
     NoBrackets = (~("[" | "]") any)+
     language = "%" lower+
     slashedReading = "/" reading "/"
-    reading = (lower | subscript | "-")+ modifier?
+    reading = (digit+ ("/" digit+)*)? "("? (lower | subscript | "-" | "ʾ")+ modifier* ")"?
     unknown = "[...]" | "..." | "?"
 
     subscript =  "ₓ" | "₀".."₉"
