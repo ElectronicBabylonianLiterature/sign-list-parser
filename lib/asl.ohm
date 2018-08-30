@@ -30,9 +30,9 @@ Asl {
     reading = (lower | subscript | "-")+ modifier?
     lacuna = "[...]" | "..."
     Instance = (Phrase "=")? CdlLabel (", " word)?
-    CdlLabel = project? number Phrase?
-    project = ((letter | "/")+ ":")
-    number = ("P" | "Q") digit+
+    CdlLabel = project? ":" number Phrase?
+    project = (letter | "/")+ 
+    number = ("P" | "PP" | "Q") digit+
     word = (reading | compound)+
 
     Phrase = alnum+
