@@ -33,7 +33,7 @@ Asl {
 
     Comment = "#" freetext
 
-    List = "@list" (alnum | "_")+
+    List = "@list" (alnum | "_" | "?")+
 
     Unicode = "@ucode" NonemptyListOf<codepoint, ".">
     codepoint = "x" hexDigit+
