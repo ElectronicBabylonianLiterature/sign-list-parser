@@ -47,7 +47,7 @@ Asl {
     NoBrackets = (~("[" | "]") any)+
     language = "%" lower+
     slashedReading = "/" reading "/"
-    reading = (digit+ ("/" digit+)*)? "("? (lower | subscript | "-" | "ʾ")+ modifier* ")"?
+    reading = (digit+ ("/" digit+)*)? "("? (lower | subscript | digit | "-" | "ʾ")+ modifier* ")"?
     unknown = "[...]" | "..." | "?"
 
     Form = "@form" variant signName Field* "@end form"?
