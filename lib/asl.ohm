@@ -1,4 +1,6 @@
 Asl {
+    SignList = Sign+
+
     Sign = "@sign" signName TopLevelField* "@end sign"
     signName = simple | enclosed
     enclosed  = "|" compound "|"
