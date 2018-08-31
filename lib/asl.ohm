@@ -23,6 +23,12 @@ Asl {
 
     ScopedField = FreeTextField<"@note">
                 | FreeTextField<"@inote">
+                | FreeTextField<"@uname">
+                | FreeTextField<"@uphase">
+                | FreeTextField<"@inst">
+                | FreeTextField<"@pname">
+
+
 
     List = "@list" alnum+
 
