@@ -11,7 +11,7 @@ Asl {
     compoundOperator = "." | "+" | "@" | "&" | "%" | "×"
     group = "(" compound ")"
     repeated = digit+ "x" simple
-    simple = ~digit (upper | subscript | digit)+ modifier?
+    simple = ~digit (upper | subscript | digit)+ modifier? variant?
     modifier = "@" (lower | digit+)
 
     TopLevelField = Form
@@ -47,12 +47,12 @@ Asl {
     NoBrackets = (~("[" | "]") any)+
     language = "%" lower+
     slashedReading = "/" reading "/"
-    reading = (digit+ ("/" digit+)*)? "("? (lower | subscript | digit | "-" | "ʾ")+ modifier* ")"?
+    reading = (digit+ ("/" digit+)*)? "("? (lower | subscript | digit | "-" | "ʾ")+ modifier* ")"? modifier* variant?
     unknown = "[...]" | "..." | "?"
 
     Form = "@form" variant signName Field* "@end form"?
-    variant = "~" lower
-
+    
+    variant = "~" (lower | digit)+
     subscript =  "ₓ" | "₀".."₉"
     upper += "Š" | "Ṣ" | "Ṭ" | "Ś" | "Ḫ" | "Ŋ"
     lower += "š" | "ṣ" | "ṭ" | "ś" | "ḫ" | "ŋ"
