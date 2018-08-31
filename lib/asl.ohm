@@ -1,5 +1,7 @@
 Asl {
-    SignList = Sign+
+    SignList = (Sign | NoSign)+
+
+    NoSign = "@nosign" signName TopLevelField* "@end sign"
 
     Sign = "@sign" signName TopLevelField* "@end sign"
     signName = simple | enclosed
