@@ -27,8 +27,9 @@ Asl {
                 | FreeTextField<"@uphase">
                 | FreeTextField<"@inst">
                 | FreeTextField<"@pname">
+                | Comment
 
-
+    Comment = "#" freetext
 
     List = "@list" alnum+
 
