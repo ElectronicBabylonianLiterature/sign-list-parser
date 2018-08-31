@@ -1,13 +1,17 @@
 Asl {
-    Sign = "@sign" (simple | enclosed) Field* "@end sign"
+    Sign = "@sign" signName TopLevelField* "@end sign"
+    signName = simple | enclosed
     enclosed  = "|" compound "|"
     compound = compoundPart (compoundOperator compoundPart)*
-    compoundPart = group | simple | repeated
+    compoundPart = group | repeated | simple
     compoundOperator = "." | "+" | "@" | "&" | "%" | "×"
     group = "(" compound ")"
     repeated = digit+ "x" simple
     simple = ~digit (upper | subscript | digit)+ modifier?
     modifier = "@" (lower | digit+)
+
+    TopLevelField = Form
+                  | Field
 
     Field = List
           | Unicode
@@ -26,7 +30,7 @@ Asl {
     FreeTextField<tag> = tag freetext
     freetext = (~"\n" any)+
 
-    Value = ("@v?" | "@v-"| "@v") language? unknown? (reading | slashedReading)?  ("[" Instance "]")? ScopedField*
+    Value = ("@v?" | "@v-"| "@v") language? unknown? (slashedReading | reading)?  ("[" Instance "]")? ScopedField*
     Instance = (NoBrackets | Brackets)+
     Brackets = "[" NoBrackets "]"
     NoBrackets = (~("[" | "]") any)+
@@ -34,6 +38,9 @@ Asl {
     slashedReading = "/" reading "/"
     reading = (digit+ ("/" digit+)*)? "("? (lower | subscript | "-" | "ʾ")+ modifier* ")"?
     unknown = "[...]" | "..." | "?"
+
+    Form = "@form" variant signName Field* "@end form"?
+    variant = "~" lower
 
     subscript =  "ₓ" | "₀".."₉"
     upper += "Š" | "Ṣ" | "Ṭ" | "Ś" | "Ḫ" | "Ŋ"
