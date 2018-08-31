@@ -10,7 +10,7 @@ Asl {
     compoundPart = group | repeated | simple
     compoundOperator = "." | "+" | "@" | "&" | "%" | "×"
     group = "(" compound ")"
-    repeated = digit+ ("x" | "×") simple
+    repeated = digit+ ("x" | "×") (simple | group)
     simple = ~digit (upper | subscript | digit)+ modifier? variant?
     modifier = "@" (lower | digit+)
 
