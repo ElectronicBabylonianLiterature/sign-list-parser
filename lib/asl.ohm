@@ -22,13 +22,13 @@ Asl {
           | ScopedField
           | FreeTextField<"@lit">
           | Value
+          | FreeTextField<"@uname">
+          | FreeTextField<"@uphase">
+          | FreeTextField<"@inst">
+          | FreeTextField<"@pname">
 
     ScopedField = FreeTextField<"@note">
                 | FreeTextField<"@inote">
-                | FreeTextField<"@uname">
-                | FreeTextField<"@uphase">
-                | FreeTextField<"@inst">
-                | FreeTextField<"@pname">
                 | Comment
 
     Comment = "#" freetext
