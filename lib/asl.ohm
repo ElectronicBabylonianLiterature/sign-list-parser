@@ -1,9 +1,9 @@
 Asl {
     SignList = (Sign | NoSign)+
 
-    NoSign = "@nosign" signName TopLevelField* "@end sign"
+    NoSign = "@nosign" signName TopLevelField* endSign
 
-    Sign = "@sign" signName TopLevelField* "@end sign"
+    Sign = "@sign" signName TopLevelField* endSign
     signName = simple | enclosed
     enclosed  = "|" compound "|"
     compound = compoundPart (compoundOperator compoundPart)*
@@ -13,6 +13,7 @@ Asl {
     repeated = digit+ ("x" | "×") (simple | group)
     simple = ~digit (upper | subscript | digit)+ modifier* variant?
     modifier = "@" (lower | digit+)
+    endSign = "@end" space "sign"
 
     TopLevelField = Form
                   | Field
