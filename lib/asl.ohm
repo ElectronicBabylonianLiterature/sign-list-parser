@@ -11,7 +11,7 @@ Asl {
     compoundOperator = "." | "+" | "@" | "&" | "%" | "×"
     group = "(" compound ")"
     repeated = digit+ ("x" | "×") (simple | group)
-    simple = ~digit (upper | subscript | digit)+ modifier? variant?
+    simple = ~digit (upper | subscript | digit)+ modifier* variant?
     modifier = "@" (lower | digit+)
 
     TopLevelField = Form
