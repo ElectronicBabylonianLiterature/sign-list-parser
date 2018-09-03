@@ -32,8 +32,8 @@ Asl {
     Unicode = "@ucode" NonemptyListOf<codepoint, ".">
     codepoint = "x" hexDigit+
     
-    FreeTextField<tag> = tag freetext
-    freetext = (~"\n" any)+
+    FreeTextField<tag> = tag freetext 
+    freetext = (~("\n" | "\r") any)+
 
     Value = ("@v?" | "@v-"| "@v") language? name?  ("[" Instance "]")? ScopedField*
     language = "%" lower+
