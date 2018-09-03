@@ -40,15 +40,15 @@ Asl {
     FreeTextField<tag> = tag freetext
     freetext = (~"\n" any)+
 
-    Value = ("@v?" | "@v-"| "@v") language? unknown? (slashedReading | reading)? unknown? ("[" Instance "]")? ScopedField*
+    Value = ("@v?" | "@v-"| "@v") language? reading?  ("[" Instance "]")? ScopedField*
+    language = "%" lower+
+    unknown = "Attinger" | "[...]" | "..." | "?" 
+    slashedReading = "/" reading "/"
+    reading = (~space any)+
     Instance = (NoBrackets | Brackets)+
     Brackets = "[" NoBrackets "]"
     NoBrackets = (~("[" | "]") any)+
-    language = "%" lower+
-    slashedReading = "/" reading "/"
-    reading = (digit+ ("/" digit+)*)? "("? (readingCharacter | group)+ modifier* ")"? modifier* variant? "⁻"? "?"?
-    readingCharacter = lower | subscript | digit | "-" | "ʾ" | "{" | "}" | "⁺" | "+"
-    unknown = "Attinger" | "[...]" | "..." | "?" 
+
 
     Form = "@form" variant signName Field* "@end form"?
     
