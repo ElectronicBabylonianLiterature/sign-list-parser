@@ -13,8 +13,10 @@ Asl {
     repeated = digit+ ("x" | "×")? (simple | group)
     simple = ~digit (upper | subscript | digit)+ modifier* variant?
     modifier = "@" (lower | digit+)
-    endSign = "@end" space "sign"
+    endSign = endTag<"sign">
 
+    endTag<tag> = "@end" space+ tag
+    
     TopLevelField = Form
                   | Field
 
@@ -50,7 +52,7 @@ Asl {
     NoBrackets = (~("[" | "]") any)+
 
 
-    Form = "@form" variant signName Field* "@end form"?
+    Form = "@form" variant signName Field* endTag<"form">?
     
     variant = "~" (lower | digit)+
     subscript =  "ₓ" | "₀".."₉"
