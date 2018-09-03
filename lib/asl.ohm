@@ -44,8 +44,6 @@ Asl {
 
     Value = ("@v?" | "@v-"| "@v") language? reading?  ("[" Instance "]")? ScopedField*
     language = "%" lower+
-    unknown = "Attinger" | "[...]" | "..." | "?" 
-    slashedReading = "/" reading "/"
     reading = (~space any)+
     Instance = (NoBrackets | Brackets)+
     Brackets = "[" NoBrackets "]"
