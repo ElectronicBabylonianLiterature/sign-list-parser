@@ -1,18 +1,10 @@
 Asl {
     SignList = (Sign | NoSign)+
 
-    NoSign = "@nosign" signName TopLevelField* endSign
+    NoSign = "@nosign" name TopLevelField* endSign
 
-    Sign = "@sign" signName TopLevelField* endSign
-    signName = simple | enclosed
-    enclosed  = "|" compound "|"
-    compound = compoundPart (compoundOperator compoundPart)*
-    compoundPart = group | repeated | simple
-    compoundOperator = "." | "+" | "@" | "&" | "%" | "×"
-    group = "(" compound ")"
-    repeated = digit+ ("x" | "×")? (simple | group)
-    simple = ~digit (upper | subscript | digit)+ modifier* variant?
-    modifier = "@" (lower | digit+)
+    Sign = "@sign" name TopLevelField* endSign
+    name = (~space any)+
     endSign = endTag<"sign">
 
     endTag<tag> = "@end" space+ tag
@@ -42,15 +34,14 @@ Asl {
     FreeTextField<tag> = tag freetext
     freetext = (~"\n" any)+
 
-    Value = ("@v?" | "@v-"| "@v") language? reading?  ("[" Instance "]")? ScopedField*
+    Value = ("@v?" | "@v-"| "@v") language? name?  ("[" Instance "]")? ScopedField*
     language = "%" lower+
-    reading = (~space any)+
     Instance = (NoBrackets | Brackets)+
     Brackets = "[" NoBrackets "]"
     NoBrackets = (~("[" | "]") any)+
 
 
-    Form = "@form" variant signName Field* endTag<"form">?
+    Form = "@form" variant name Field* endTag<"form">?
     
     variant = "~" (lower | digit)+
     subscript =  "ₓ" | "₀".."₉"
