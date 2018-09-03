@@ -42,7 +42,7 @@ Asl {
     FreeTextField<tag> = tag freetext
     freetext = (~"\n" any)+
 
-    Value = ("@v?" | "@v-"| "@v") language? unknown? (slashedReading | reading)?  ("[" Instance "]")? ScopedField*
+    Value = ("@v?" | "@v-"| "@v") language? unknown? (slashedReading | reading)? unknown? ("[" Instance "]")? ScopedField*
     Instance = (NoBrackets | Brackets)+
     Brackets = "[" NoBrackets "]"
     NoBrackets = (~("[" | "]") any)+
