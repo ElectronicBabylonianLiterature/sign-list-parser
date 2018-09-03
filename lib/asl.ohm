@@ -11,6 +11,7 @@ Asl {
     
     TopLevelField = Form
                   | Field
+                  | Fake
 
     Field = FreeTextField<"@list">
           | Unicode
@@ -42,7 +43,9 @@ Asl {
 
 
     Form = "@form" variant name Field* endTag<"form">?
-    
+
+    Fake = "@fake" "1"
+
     variant = "~" (lower | digit)+
     subscript =  "ₓ" | "₀".."₉"
     upper += "Š" | "Ṣ" | "Ṭ" | "Ś" | "Ḫ" | "Ŋ"
