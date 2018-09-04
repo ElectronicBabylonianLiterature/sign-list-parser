@@ -35,12 +35,17 @@ Asl {
     FreeTextField<tag> = tag freetext 
     freetext = (~("\n" | "\r") any)+
 
-    Value = ("@v?" | "@v-"| "@v") language? name?  ("[" Instance "]")? ScopedField*
+    Value = ("@v?" | "@v-"| "@v") language? value ("[" Instance "]")? ScopedField*
     language = "%" lower+
+    value = number | reading
+    reading = (~(space | "₀".."₉" | "ₓ") any)+ subIndex? ("⁺" | "⁻"  | "?")? modifier*
+    modifier = "@" (lower | digit)+
+    number = fraction reading
+    fraction = digit+ ("/" digit+)?
+    subIndex = ("₀".."₉")+ | "ₓ"
     Instance = (NoBrackets | Brackets)+
     Brackets = "[" NoBrackets "]"
     NoBrackets = (~("[" | "]") any)+
-
 
     Form = "@form" variant name Field* endTag<"form">?
 
