@@ -37,12 +37,10 @@ Asl {
 
     Value = ("@v?" | "@v-"| "@v") language? value ("[" Instance "]")? ScopedField*
     language = "%" lower+
-    value = badValue | number | reading
+    value = badValue | reading
     badValue =  reading ("-"? reading)+
     reading = (~(space | "₀".."₉" | "ₓ" | "-") any)+ subIndex? ("⁺" | "⁻"  | "?")? modifier*
     modifier = "@" (lower | digit)+
-    number = fraction reading
-    fraction = digit+ ("/" digit+)?
     subIndex = ("₀".."₉")+ | "ₓ"
     Instance = (NoBrackets | Brackets)+
     Brackets = "[" NoBrackets "]"
