@@ -1,6 +1,6 @@
 {
   "name": "sign-list-parser",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A script to parse ASL files to JSON",
   "main": "index.js",
   "repository": "https://github.com/ElectronicBabylonianLiterature/sign-list-parser.git",
