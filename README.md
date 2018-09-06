@@ -15,7 +15,7 @@ node index.js <path to the asl file>
 
 ## Input
 
-The scripts expects a sign list file in the asl format. See: [SL: Sign Lists](http://build-oracc.museum.upenn.edu/ns/sl/1.0/). The script parses all `@sign` entities from the file and ignores `@nosign` entities and lines beginning with `#`.For the signs following tags are ignored: `@uname`, `@uphase`, `@inst`, and `@pname`. `v@` with invalid value will be ignored, e.g. a sole question mark or a value containing slashes, capital letters, lacuna, and numbers.
+The scripts expects a sign list file in the asl format. See: [SL: Sign Lists](http://build-oracc.museum.upenn.edu/ns/sl/1.0/). The script parses all `@sign` entities from the file and ignores `@nosign` entities signs with `@fake 1`, and lines beginning with `#` are ignored. For the signs following tags are ignored: `@uname`, `@uphase`, `@inst`, and `@pname`. `v@` with invalid value will be ignored, e.g. a sole question mark or a value containing slashes, capital letters, lacuna, and numbers.
 
 For the script to work properly the sign list might have to be cleaned up:
 
