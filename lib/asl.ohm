@@ -35,9 +35,10 @@ Asl {
     FreeTextField<tag> = tag freetext 
     freetext = (~("\n" | "\r") any)+
 
-    Value = ("@v?" | "@v-"| "@v") language? value ("[" Instance "]")? ScopedField*
+    Value = ("@v?" | "@v-"| "@v") language? value ProofExample? ScopedField*
     language = "%" lower+
     value = badValue | reading
+    ProofExample = "[" Instance "]"
     badValue =  reading ("-"? reading)+
     reading = (~(space | "₀".."₉" | "ₓ" | "-") any)+ subIndex? ("⁺" | "⁻"  | "?")? modifier*
     modifier = "@" (lower | digit)+
