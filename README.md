@@ -65,3 +65,7 @@ The scripts writes `signList.json` with an array of signs in the following forma
     ]
 }
 ```
+
+## Caveats
+
+- Since all the values containing a number are removed, values for specific numbers (1, 2, 10, 20, 30) have to be added manually if needed.
