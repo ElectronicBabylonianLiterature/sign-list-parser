@@ -69,3 +69,6 @@ The scripts writes `signList.json` with an array of signs in the following forma
 ## Caveats
 
 - Since all the values containing a number are removed, values for specific numbers (1, 2, 10, 20, 30) have to be added manually if needed.
+- The special number signs (e.g `9(AŠ)`) should be ignored. The eBL application handles numbers differently.
+- Values with `@` (e.g. `sig₁₅@v`) are parsed by the script, but they are incorrect and should be ignored.
+
