@@ -7,7 +7,7 @@
   "author": "Jussi Laasonen <jussi.laasonen@lmu.de>",
   "license": "MIT",
   "engines": {
-    "node": "^10.9.0",
+    "node": "^13.5.0",
     "yarn": "^1.9.4"
   },
   "devDependencies": {
